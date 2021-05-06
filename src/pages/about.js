@@ -3,18 +3,18 @@ import { Link } from 'gatsby';
 import Footer from '../components/footer';
 import Header from '../components/header';
 
-const HomePage = () => (
+const About = () => (
   <div>
     <Header />
-    <h1>Hello!</h1>
-    <h2>I´ m Gerard, a web developer from barcelona</h2>
+    <h2>About</h2>
+    <p>I´m a web developer, passionate about programming, basketball and music</p>
     <p>
-      Need a developer ?
+      Need a developer?
       {' '}
-      <Link to="/contact">Contact me!</Link>
+      <Link to="/">Contact me!</Link>
     </p>
     <Footer />
   </div>
 );
 
-export default HomePage;
+export default About;
