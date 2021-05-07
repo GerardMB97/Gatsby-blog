@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     semi: [2, 'always'],
     'comma-dangle': [2, 'never'],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }]
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/prop-types': 0
   }
 };

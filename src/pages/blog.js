@@ -1,14 +1,12 @@
 import React from 'react';
-import Footer from '../components/footer';
-import Header from '../components/header';
+import Layout from '../components/layout';
 
 const Blog = () => (
-  <div>
-    <Header />
+
+  <Layout>
     <h2>Blog</h2>
     <p>Posts are yet to be written!</p>
-    <Footer />
-  </div>
+  </Layout>
 );
 
 export default Blog;

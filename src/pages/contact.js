@@ -1,10 +1,8 @@
 import React from 'react';
-import Footer from '../components/footer';
-import Header from '../components/header';
+import Layout from '../components/layout';
 
 const Contact = () => (
-  <div>
-    <Header />
+  <Layout>
     <h2>Contact</h2>
     <table>
       <tr>Name :</tr>
@@ -16,8 +14,8 @@ const Contact = () => (
       <tr>Address:</tr>
       <td><address>C/ Arnau 2-8, Barcelona, Spain 08031</address></td>
     </table>
-    <Footer />
-  </div>
+  </Layout>
+
 );
 
 export default Contact;

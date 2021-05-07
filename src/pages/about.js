@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Footer from '../components/footer';
-import Header from '../components/header';
+import Layout from '../components/layout';
 
 const About = () => (
-  <div>
-    <Header />
+  <Layout>
     <h2>About</h2>
     <p>I´m a web developer, passionate about programming, basketball and music</p>
     <p>
@@ -13,8 +11,7 @@ const About = () => (
       {' '}
       <Link to="/">Contact me!</Link>
     </p>
-    <Footer />
-  </div>
+  </Layout>
 );
 
 export default About;
