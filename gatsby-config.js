@@ -8,5 +8,9 @@ module.exports = {
   /* Your site config here */
   plugins: [
     'gatsby-plugin-sass'
-  ]
+  ],
+  siteMetadata: {
+    title: 'The Great Gatsby Blog',
+    author: 'Gerard Mangues'
+  }
 };
