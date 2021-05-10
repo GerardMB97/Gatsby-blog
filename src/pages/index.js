@@ -9,11 +9,6 @@ const HomePage = () => (
     <Head title="Home" />
     <h1>Hello!</h1>
     <h2>I´ m Gerard, a web developer from barcelona</h2>
-    <p>
-      Need a developer ?
-      {' '}
-      <Link to="/contact">Contact me!</Link>
-    </p>
   </Layout>
 
 );
