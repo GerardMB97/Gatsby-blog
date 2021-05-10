@@ -1,8 +1,10 @@
 import React from 'react';
 import Layout from '../components/layout';
+import Head from '../components/head';
 
 const Contact = () => (
   <Layout>
+    <Head title="Contact" />
     <h2>Contact</h2>
     <table>
       <tr>Name :</tr>
