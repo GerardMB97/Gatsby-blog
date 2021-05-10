@@ -8,6 +8,7 @@ module.exports = {
   /* Your site config here */
   plugins: [
     'gatsby-plugin-sass',
+    'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
