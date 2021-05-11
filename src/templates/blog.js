@@ -6,19 +6,19 @@ import * as blogStyles from './blog.module.scss';
 
 export const query = graphql`
     query ($skip: Int $limit: Int) {
-      allContentfulBlogPost(
+      allWpPost  (
         sort: {
-          fields: publishedDate
+          fields: date
           order: DESC
         }
         limit: $limit
         skip: $skip
-      ) {
-        edges {
-          node {
-            title
+      ){
+        edges{
+          node{
             slug
-            publishedDate(formatString: "MMMM Do, YYYY")
+            title
+            date(formatString: "MMMM Do, YYYY")
           }
         }
       }
@@ -30,11 +30,11 @@ const Blog = ({ data }) => (
   <Layout>
     <Head title="Blog" />
     <ol className={blogStyles.posts}>
-      {data.allContentfulBlogPost.edges.map((post) => (
+      {data.allWpPost.edges.map((post) => (
         <li key={post.node.slug} className={blogStyles.post}>
           <Link to={`/blog/${post.node.slug}`}>
             <h2>{post.node.title}</h2>
-            <p>{post.node.publishedDate}</p>
+            <p>{post.node.date}</p>
           </Link>
         </li>
       ))}
