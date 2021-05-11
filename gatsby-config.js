@@ -11,6 +11,12 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-source-wordpress',
+      options: {
+        url: process.env.WPGRAPHQL_URL
+      }
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'src',
@@ -39,7 +45,8 @@ module.exports = {
         ]
       }
     },
-    'gatsby-plugin-sharp'
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp'
   ],
   siteMetadata: {
     title: 'The Great Gatsby Blog',
