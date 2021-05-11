@@ -1,65 +1,45 @@
-/* eslint-disable react/no-danger */
 import React from 'react';
-import { graphql } from 'gatsby';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import Head from '../components/head';
+import * as blogStyles from './blog.module.scss';
 
 export const query = graphql`
-query ($slug: String)  {
-  contentfulBlogPost (
-    slug: {eq: $slug}
-  ) {
-    title
-    publishedDate(formatString: "MMMM Do, YYYY")
-    body {
-      raw 
-      references {
-         ... on ContentfulAsset {
-          fixed(width: 1600) {
-                width
-                height
-                src
-                srcSet
-              }
-          contentful_id
-          title
-            file {
-              url
-            } 
+    query ($skip: Int $limit: Int) {
+      allContentfulBlogPost(
+        sort: {
+          fields: publishedDate
+          order: DESC
+        }
+        limit: $limit
+        skip: $skip
+      ) {
+        edges {
+          node {
+            title
+            slug
+            publishedDate(formatString: "MMMM Do, YYYY")
+          }
         }
       }
     }
-  }
-}
-`;
+  `;
 
-const Blog = ({ data }) => {
-  const options = {
-    renderNode: {
-      'embedded-asset-block': (node) => {
-        // const img = data.contentfulBlogPost.body.references.find
-        const { file } = data.contentfulBlogPost.body.references.find(
-          (reference) => reference.contentful_id === node.data.target.sys.id
-        );
-        return <img src={file.url} alt="Hello" />;
-      }
-    }
-  };
+const Blog = ({ data }) => (
 
-  const richTextBody = JSON.parse(data.contentfulBlogPost.body.raw);
-  return (
-    <Layout>
-      <Head title={data.contentfulBlogPost.title} />
-      <h1>{data.contentfulBlogPost.title}</h1>
-      <p>{data.contentfulBlogPost.publishedDate}</p>
-      <div>
-        {' '}
-        {documentToReactComponents(richTextBody, options)}
-      </div>
-
-    </Layout>
-  );
-};
+  <Layout>
+    <Head title="Blog" />
+    <ol className={blogStyles.posts}>
+      {data.allContentfulBlogPost.edges.map((post) => (
+        <li key={post.node.slug} className={blogStyles.post}>
+          <Link to={`/blog/${post.node.slug}`}>
+            <h2>{post.node.title}</h2>
+            <p>{post.node.publishedDate}</p>
+          </Link>
+        </li>
+      ))}
+    </ol>
+  </Layout>
+);
 
 export default Blog;
